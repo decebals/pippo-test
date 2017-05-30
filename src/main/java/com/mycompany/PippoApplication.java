@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import ro.pippo.core.Application;
 
 import java.io.File;
-import java.io.FileInputStream;
 
 /**
  * A simple Pippo application.
@@ -21,7 +20,7 @@ public class PippoApplication extends Application {
         getRouter().ignorePaths("/favicon.ico");
 
         // send 'Hello World' as response
-        GET("/", (routeContext) -> routeContext.send("Hello World"));
+        GET("/", routeContext -> routeContext.send("Hello World"));
 
         // send a template as response
         GET("/template", (routeContext) -> {
@@ -40,17 +39,10 @@ public class PippoApplication extends Application {
 
 
         // show profile
-        GET("/profile", (routeContext) -> {
-            routeContext.render("profile");
-        });
+        GET("/profile", routeContext -> routeContext.render("profile"));
 
         // serve image
-        GET("/profile/image", (routeContext) -> {
-            routeContext.getResponse().
-//                header("Content-Type", "image/png").
-//                header("Content-Disposition", "inline; filename=\"" + "MyImg" + "\"").
-                file(new File("avatar.png"));
-        });
+        GET("/profile/image", routeContext -> routeContext.send(new File("avatar.png")));
     }
 
 }
