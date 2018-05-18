@@ -35,7 +35,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <pippo.version>1.4.0</pippo.version>
+        <pippo.version>1.9.0</pippo.version>
         <slf4j.version>1.7.7</slf4j.version>
         <main.class>com.mycompany.PippoLauncher</main.class>
     </properties>
@@ -52,6 +52,21 @@
             <groupId>ro.pippo</groupId>
             <artifactId>pippo-freemarker</artifactId>
             <version>${pippo.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ro.pippo</groupId>
+            <artifactId>pippo-test</artifactId>
+            <version>${pippo.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Hot deployment -->
+        <dependency>
+            <groupId>org.kohsuke.metainf-services</groupId>
+            <artifactId>metainf-services</artifactId>
+            <version>1.7</version>
+            <scope>compile</scope>
         </dependency>
 
         <!-- Logging -->
@@ -148,6 +163,11 @@
                 <dependency>
                     <groupId>ro.pippo</groupId>
                     <artifactId>pippo-jetty</artifactId>
+                    <!--
+                    <artifactId>pippo-undertow</artifactId>
+                    <artifactId>pippo-tomcat</artifactId>
+                    <artifactId>pippo-tjws</artifactId>
+                    -->
                     <version>${pippo.version}</version>
                 </dependency>
             </dependencies>
